@@ -1,0 +1,63 @@
+# @package data_generation
+# Testing configuration - smaller datasets for faster tests
+
+seed: 42
+
+time:
+  start_year: 2020
+  end_year: 2025  # Smaller range for testing
+  extrap_start_year: 2001
+  extrap_end_year: 2050  # Smaller range for testing
+  pulse_years: [2020]
+
+climate:
+  rcps: ['dummy1']  # Single RCP for testing
+  gcms: ['dummy1']  # Single GCM for testing
+  gases: ['dummy_gas']
+  slrs: [0, 1]
+  n_simulations: 2  # Fewer simulations for testing
+
+economic:
+  ssps: ['ssp2', 'ssp3']  # Fewer SSPs for testing
+  regions: ['dummy1']  # Single region for testing
+  models: ['dummy1']  # Single model for testing
+  n_batches: 5  # Fewer batches for testing
+
+data_ranges:
+  temperature_range: [0.0, 5.0]  # Smaller range for testing
+  gmsl_range: [0.0, 5.0]
+  population_range: [20.0, 50.0]
+  gdppc_range: [50.0, 80.0]
+  delta_damage_range: [5.0, 10.0]
+  histclim_damage_range: [1.0, 5.0]
+  emission_conversion_factor: 0.1
+
+paths:
+  output_dir: "./test_synthetic_data"
+  gmst_path: "./climate/test_GMTanom.csv"
+  gmsl_path: "./climate/test_coastal_gmsl.zarr"
+  gmst_fair_path: "./climate/test_fair_temps.nc"
+  gmsl_fair_path: "./climate/test_fair_gmsl.nc4"
+  conversion_path: "./climate/test_conversion.nc4"
+  ecs_mask_path: "./climate/test_ecs_mask.nc"
+  economic_path: "./econ/test_integration-econ.zarr"
+  reduced_damages_path: "./test_reduced_damages"
+  ssp_damage_functions_path: "./test_ssp_damage_functions"
+  results_path: "./test_results"
+
+sectors:
+  coastal:
+    name: "test_coastal_sector"
+    delta_variable: "delta_dummy"
+    histclim_variable: "histclim_dummy"
+    sector_path: "./sectoral/test_coastal_damages.zarr"
+    formula: "damages ~ -1 + gmsl + np.power(gmsl, 2)"
+    is_coastal: true
+
+  non_coastal:
+    name: "test_not_coastl_sector"
+    delta_variable: "delta_dummy"
+    histclim_variable: "histclim_dummy"
+    sector_path: "./sectoral/test_not_coastl_damages.zarr"
+    formula: "damages ~ -1 + anomaly + np.power(anomaly, 2)"
+    is_coastal: false

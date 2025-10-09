@@ -1,0 +1,14 @@
+{
+  "sector": "example",
+  "pulse_year": 2020,
+  "formula": "damages ~ -1 + anomaly + np.power(anomaly, 2)",
+  "timestamp": "2025-09-30T23:30:30.240286",
+  "coefficients": {
+    "anomaly": 140.83168005460854,
+    "np.power(anomaly, 2)": 28.404218704677977
+  },
+  "fit_statistics": {
+    "r_squared": 0.7746102158307487,
+    "n_observations": 1458
+  }
+}

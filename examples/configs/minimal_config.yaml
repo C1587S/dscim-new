@@ -1,0 +1,15 @@
+# Minimal DSCIM Configuration
+# Required fields only
+
+paths:
+  reduced_damages_library: ./workflow_output/reduced_damages
+
+econdata:
+  global_ssp: ./workflow_output/econ/integration-econ.zarr
+
+sectors:
+  not_coastal:
+    sector_path: ./workflow_output/sectoral/not_coastal_damages.zarr
+    histclim: histclim_dummy
+    delta: delta_dummy
+    formula: damages ~ -1 + anomaly + np.power(anomaly, 2)

@@ -1,0 +1,32 @@
+# @package testing
+# Default testing configuration
+
+enable_regression_tests: true
+
+regression_tolerances:
+  damage_function_coefficients:
+    rtol: 1.0e-6
+    atol: 1.0e-10
+  damage_function_points:
+    rtol: 1.0e-5
+    atol: 1.0e-9
+  global_consumption:
+    rtol: 1.0e-5
+    atol: 1.0e-9
+  discount_factors:
+    rtol: 1.0e-6
+    atol: 1.0e-10
+  marginal_damages:
+    rtol: 1.0e-5
+    atol: 1.0e-9
+  scc:
+    rtol: 1.0e-4
+    atol: 1.0e-8
+
+# Validation settings
+validate_data_structure: true
+validate_mathematical_properties: true
+
+# Performance testing
+benchmark_performance: false
+performance_baseline_path: null

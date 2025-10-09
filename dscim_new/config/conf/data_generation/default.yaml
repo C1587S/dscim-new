@@ -1,0 +1,63 @@
+# @package data_generation
+# Default configuration for data generation
+
+seed: 42
+
+time:
+  start_year: 2020
+  end_year: 2030
+  extrap_start_year: 2001
+  extrap_end_year: 2099
+  pulse_years: [2020]
+
+climate:
+  rcps: ['dummy1', 'dummy2']
+  gcms: ['dummy1', 'dummy2']
+  gases: ['dummy_gas']
+  slrs: [0, 1]
+  n_simulations: 4
+
+economic:
+  ssps: ['ssp1', 'ssp2', 'ssp3', 'ssp4', 'ssp5']
+  regions: ['dummy1', 'dummy2']
+  models: ['dummy1', 'dummy2']
+  n_batches: 15
+
+data_ranges:
+  temperature_range: [0.0, 10.0]
+  gmsl_range: [0.0, 10.0]
+  population_range: [20.0, 100.0]
+  gdppc_range: [50.0, 100.0]
+  delta_damage_range: [5.0, 15.0]
+  histclim_damage_range: [1.0, 10.0]
+  emission_conversion_factor: 0.1
+
+paths:
+  output_dir: "./synthetic_data"
+  gmst_path: "./climate/GMTanom_all_temp_2001_2010_smooth.csv"
+  gmsl_path: "./climate/coastal_gmsl_v0.20.zarr"
+  gmst_fair_path: "./climate/ar6_fair162_sim.nc"
+  gmsl_fair_path: "./climate/scenario_gmsl.nc4"
+  conversion_path: "./climate/conversion.nc4"
+  ecs_mask_path: "./climate/parameter_filters_truncate_ECS.nc"
+  economic_path: "./econ/integration-econ-bc39.zarr"
+  reduced_damages_path: "./reduced_damages"
+  ssp_damage_functions_path: "./ssp_damage_functions"
+  results_path: "./results"
+
+sectors:
+  coastal:
+    name: "dummy_coastal_sector"
+    delta_variable: "delta_dummy"
+    histclim_variable: "histclim_dummy"
+    sector_path: "./sectoral/coastal_damages.zarr"
+    formula: "damages ~ -1 + gmsl + np.power(gmsl, 2)"
+    is_coastal: true
+
+  non_coastal:
+    name: "dummy_not_coastl_sector"
+    delta_variable: "delta_dummy"
+    histclim_variable: "histclim_dummy"
+    sector_path: "./sectoral/not_coastl_damages.zarr"
+    formula: "damages ~ -1 + anomaly + np.power(anomaly, 2)"
+    is_coastal: false

@@ -1,0 +1,79 @@
+name: dscim-refactoring
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  # Python
+  - python=3.11
+
+  # Core scientific computing
+  - numpy>=1.21.0
+  - pandas>=1.5.0
+  - xarray>=2022.3.0
+  - scipy>=1.9.0
+  - netcdf4>=1.6.0
+  - zarr>=2.12.0
+
+  # Statistical and ML libraries
+  - scikit-learn>=1.1.0
+  - statsmodels>=0.13.0
+
+  # Testing framework
+  - pytest>=7.0.0
+  - pytest-xdist>=2.5.0
+  - pytest-benchmark>=4.0.0
+  - pytest-cov>=4.0.0
+  - pytest-html>=3.1.0
+  - pytest-mock>=3.8.0
+
+  # Data validation
+  - hypothesis>=6.50.0
+
+  # Development and code quality
+  - black>=22.0.0
+  - flake8>=5.0.0
+  - mypy>=1.0.0
+  - pre-commit>=2.20.0
+
+  # Performance monitoring (install via pip instead)
+  # - memory-profiler
+  # - line-profiler
+
+  # Documentation
+  - sphinx>=4.0.0
+  - sphinx-rtd-theme>=1.0.0
+  - nbsphinx>=0.8.0
+
+  # Jupyter for development and analysis
+  - jupyter>=1.0.0
+  - jupyterlab>=3.0.0
+  - ipykernel>=6.0.0
+
+  # Visualization (for debugging and analysis)
+  - matplotlib>=3.5.0
+  - seaborn>=0.11.0
+  - plotly>=5.0.0
+
+  # Configuration management (for Phase 4)
+  - hydra-core>=1.1.0
+  - omegaconf>=2.1.0
+
+  # Parallel processing (for Phase 5)
+  - dask>=2021.9.0
+  - distributed>=2021.9.0
+
+  # File I/O and utilities
+  - pyyaml>=6.0
+  - toml>=0.10.0
+  - pathlib2>=2.3.0
+
+  # Optional: For compatibility testing with original DSCIM
+  - pip>=21.0.0
+
+  # Pip dependencies (packages not available in conda or better versions)
+  - pip:
+    - pytest-sugar>=0.9.4  # Better pytest output
+    - pytest-clarity>=1.0.0  # Clearer assertion failures
+    - rich>=12.0.0  # Rich text and progress bars
+    - memory-profiler>=0.60.0  # Memory usage monitoring
+    - line-profiler>=4.0.0  # Line-by-line profiling

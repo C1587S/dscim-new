@@ -1,0 +1,97 @@
+site_name: DSCIM-New Documentation
+site_description: Refactored and modular implementation of the Data-driven Spatial Climate Impact Model
+site_author: Climate Impact Lab
+site_url: https://dscim-new.readthedocs.io
+
+repo_name: ClimateImpactLab/dscim-new
+repo_url: https://github.com/ClimateImpactLab/dscim-new
+edit_uri: edit/main/docs/
+
+docs_dir: docs
+site_dir: site
+
+theme:
+  name: readthedocs
+  highlightjs: true
+  hljs_languages:
+    - yaml
+    - python
+
+nav:
+  - Home: index.md
+  - Getting Started:
+    - Overview: getting-started/overview.md
+    - Installation: getting-started/installation.md
+    - Quick Start: getting-started/quickstart.md
+  - User Guide:
+    - Architecture: user-guide/architecture.md
+    - Configuration: user-guide/configuration.md
+  - Examples:
+    - Complete Workflow: examples/complete-workflow.md
+  - API Reference:
+    - Pipeline: api/pipeline.md
+    - Core Functions: api/core.md
+    - Configuration: api/configuration.md
+  - Developer Guide:
+    - Comparison with Original: developer/comparison.md
+    - Pending Implementation: developer/pending.md
+  - About:
+    - Project Status: about/status.md
+
+markdown_extensions:
+  - toc:
+      permalink: true
+      toc_depth: 3
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - def_list
+  - footnotes
+  - meta
+  - tables
+  - pymdownx.arithmatex
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.magiclink
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+plugins:
+  - search
+  - mkdocstrings:
+      enabled: true
+      default_handler: python
+      handlers:
+        python:
+          options:
+            docstring_style: numpy
+            show_source: false
+            show_root_heading: true
+            show_root_full_path: false
+            show_object_full_path: false
+            show_category_heading: true
+            show_if_no_docstring: false
+            heading_level: 2
+          inventories:
+            - https://docs.python.org/3/objects.inv
+
+extra_css:
+  - css/custom.css
+
+extra:
+  version: 0.1.0
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ClimateImpactLab/dscim-new

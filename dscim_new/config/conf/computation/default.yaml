@@ -1,0 +1,31 @@
+# @package computation
+# Default computation configuration
+
+damage_model:
+  formula: "damages ~ -1 + anomaly + np.power(anomaly, 2)"
+  fit_type: "ols"  # 'ols' or 'quantreg'
+  extrapolation_method: "global_c_ratio"
+  extrapolation_start_year: 2085
+  extrapolation_end_year: 2099
+  clip_gmsl: false
+
+discounting:
+  discount_type: "euler_ramsey"
+  discount_rates: [0.01, 0.015, 0.02, 0.025, 0.03, 0.05]
+  rho: 0.00461878399  # Pure rate of time preference
+  eta: 1.421158116   # Elasticity of marginal utility
+  discrete_discounting: false
+
+fair_aggregation:
+  aggregation_methods: ["ce", "mean", "gwr_mean", "median", "median_params"]
+  fair_dims: ["simulation"]
+  weitzman_parameters: [0.1, 0.5]
+
+# Performance settings
+use_dask: true
+n_workers: 4
+memory_limit: "4GB"
+
+# Output settings
+save_intermediate: true
+compress_output: true

@@ -1,0 +1,41 @@
+# Example DSCIM Configuration
+# This is a template - paths will be updated by run_full_workflow.py
+
+paths:
+  reduced_damages_library: ../workflow_output/reduced_damages
+  ssp_damage_function_library: ../workflow_output/damage_functions
+  AR6_ssp_results: ../workflow_output/results
+
+econdata:
+  global_ssp: ../workflow_output/damages_data/econ/integration-econ.zarr
+
+sectors:
+  not_coastal:
+    sector_path: ../workflow_output/damages_data/sectoral/noncoastal_damages.zarr
+    histclim: histclim_dummy
+    delta: delta_dummy
+    formula: damages ~ -1 + anomaly + np.power(anomaly, 2)
+
+  coastal:
+    sector_path: ../workflow_output/damages_data/sectoral/coastal_damages.zarr
+    histclim: histclim_coastal
+    delta: delta_coastal
+    formula: damages ~ -1 + gmsl + np.power(gmsl, 2)
+
+processing:
+  use_dask: false  # Set to true for large datasets
+  verbose: true
+  output_format: zarr
+  save_intermediate: true
+
+pipeline:
+  sectors_to_process:
+    - not_coastal
+  recipes:
+    - adding_up
+    - risk_aversion
+  reductions:
+    - cc
+    - no_cc
+  eta_values:
+    - 2.0

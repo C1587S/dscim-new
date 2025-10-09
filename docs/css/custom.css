@@ -1,0 +1,55 @@
+/* Custom CSS for DSCIM-New documentation */
+
+/* Code blocks */
+.codehilite {
+    background-color: #f6f8fa;
+    border-radius: 3px;
+    padding: 16px;
+}
+
+/* Admonitions */
+.admonition {
+    padding: 15px;
+    margin-bottom: 20px;
+    border-left: 4px solid #448aff;
+    border-radius: 3px;
+}
+
+.admonition-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+/* Tables */
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+}
+
+table th {
+    background-color: #f6f8fa;
+    font-weight: bold;
+    padding: 12px;
+    text-align: left;
+}
+
+table td {
+    padding: 12px;
+    border-bottom: 1px solid #e1e4e8;
+}
+
+/* Links */
+a {
+    color: #0366d6;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Navigation */
+.wy-nav-content {
+    max-width: 1200px;
+}
