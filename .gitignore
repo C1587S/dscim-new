@@ -6,6 +6,11 @@ tests/
 !docs/**/*.md
 !README.md
 
+# Examples generated data and results
+examples/dummy_data/
+examples/dummy_results/
+examples/workflow_output/
+
 # Created by https://www.toptal.com/developers/gitignore/api/python,jupyternotebooks,macos,linux
 # Edit at https://www.toptal.com/developers/gitignore?templates=python,jupyternotebooks,macos,linux
 
