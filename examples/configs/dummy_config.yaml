@@ -1,0 +1,58 @@
+mortality_version: 0
+coastal_version: "0.20"
+
+AR6_ssp_climate:
+  gases:
+    - dummy_gas
+  gmsl_path: ./dummy_data/climate/coastal_gmsl.zarr
+  gmst_path: ./dummy_data/climate/GMTanom_all_temp.csv
+  gmst_fair_path: ./dummy_data/climate/ar6_fair162_sim.nc
+  gmsl_fair_path: ./dummy_data/climate/scenario_gmsl.nc4
+  damages_pulse_conversion_path: ./dummy_data/climate/conversion.nc4
+  emission_scenarios:
+    - dummy1
+    - dummy2
+
+econdata:
+  global_ssp: ./dummy_data/damages_data/econ/integration-econ.zarr
+
+paths:
+  reduced_damages_library: ./dummy_results/reduced_damages
+  ssp_damage_function_library: ./dummy_results/ssp_damage_functions
+  AR6_ssp_results: ./dummy_results/AR6_ssp
+  AR5_ssp_results: ./dummy_results/AR5_ssp
+
+sectors:
+  dummy_coastal_sector:
+    histclim: histclim_dummy
+    delta: delta_dummy
+    sector_path: ./dummy_data/damages_data/sectoral/coastal_damages.zarr
+    formula: damages ~ -1 + gmsl + np.power(gmsl, 2)
+
+  dummy_not_coastl_sector:
+    histclim: histclim_dummy
+    delta: delta_dummy
+    sector_path: ./dummy_data/damages_data/sectoral/noncoastal_damages.zarr
+    formula: damages ~ -1 + anomaly + np.power(anomaly, 2)
+
+global_parameters:
+  ext_end_year: 2100
+  ext_subset_end_year: 2030
+  subset_dict:
+    ssp:
+      - ssp2
+      - ssp3
+      - ssp4
+  fair_aggregation:
+    - ce
+    - median
+    - mean
+    - gwr_mean
+    - median_params
+  discrete_discounting: False
+  weitzman_parameter:
+    - 0.1
+    - 1.0
+    - 0.25
+    - 0.01
+    - 0.001
