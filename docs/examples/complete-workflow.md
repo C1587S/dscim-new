@@ -2,31 +2,27 @@
 
 This example demonstrates the full DSCIM pipeline from data preparation to SCC calculation.
 
-## Script Overview
+## Integration Results Replication
 
-The complete workflow script executes:
+**Location**: `examples/run_integration_results_replication.py`
 
-1. Synthetic data generation (climate, damages, economic)
-2. Damage reduction with climate scenarios
-3. Damage function estimation via OLS regression
-4. SCC calculation with multiple discount methods
+This comprehensive example replicates the original DSCIM integration test and demonstrates the complete end-to-end workflow. It's the recommended starting point for understanding how all DSCIM components work together.
 
-Examples are included in the `examples/` folder.
-
-## Running the Example
+**Quick Start:**
 
 ```bash
-cd examples/scripts
-python full_pipeline_example.py --verbose --output-dir ../../test_output
+cd examples
+python run_integration_results_replication.py
 ```
 
-Options:
-- `--verbose`: Enable detailed progress output
-- `--output-dir PATH`: Specify output directory
-- `--sector {not_coastal,coastal}`: Choose sector
-- `--pulse-year YEAR`: SCC pulse year (default: 2020)
+**No setup required** - the script automatically generates all necessary synthetic data and runs the complete 11-step DSCIM pipeline.
 
-**Resource Management**: **(EXPLAIN THIS BETTER)**
+See the **[Integration Replication Guide](integration-replication.md)** for complete documentation including:
+- Detailed explanation of all 11 pipeline steps
+- Configuration parameters
+- Directory structure and outputs
+- Validation against original DSCIM
+- Expected runtime and output examples
 
 ## Step-by-Step Walkthrough
 
@@ -306,23 +302,28 @@ for recipe in recipes:
         )
 ```
 
-## Comparison with Original Implementation
+## Comparison with Original DSCIM Implementation
 
-The workflow replicates the original `dscim-testing/run_integration_result.py` script with equivalent outputs:
+The integration replication example validates that DSCIM-New produces the same results as the original DSCIM implementation.
 
-| Original | DSCIM-New | Status |
-|----------|-----------|--------|
-| `reduce_damages()` | `ReduceDamagesStep` | Equivalent |
-| `run_ssps()` | `GenerateDamageFunctionStep` + `CalculateSCCStep` | Equivalent |
-| Output files | Zarr format | Same structure |
+| Original DSCIM | DSCIM-New | Status |
+|----------------|-----------|--------|
+| `reduce_damages()` | `ReduceDamagesPipeline` | ✓ Equivalent |
+| `run_ssps()` | `DamageFunctionProcessor` + `calculate_marginal_damages_from_fair()` + `calculate_scc_with_uncertainty()` | ✓ Equivalent |
+| Output files | Zarr format | ✓ Same structure |
+| OLS regression | `statsmodels.formula.api.ols()` | ✓ Same library |
+| Discounting methods | Constant, Ramsey, GWR | ✓ All preserved |
 
-Key differences:
-- Modular steps vs less modular method/functions
-- Explicit inputs/outputs vs implicit data flow
-- Type-safe configuration vs dictionary parameters
-- Validation at each step vs runtime errors
+**Key Improvements in DSCIM-New**:
+- **Modular architecture**: Clear separation of concerns with dedicated processors and pipeline steps
+- **Type safety**: Pydantic-based configuration with validation
+- **Explicit data flow**: Clear inputs/outputs at each step instead of implicit dependencies
+- **Better error handling**: Validation at each step with informative error messages
+- **Reproducibility**: Seed-based synthetic data generation for testing
 
-Results are numerically identical within floating-point tolerance.
+**Numerical Equivalence**: Results are numerically identical to the original implementation within floating-point tolerance.
+
+See the [Integration Replication Guide](integration-replication.md) for detailed validation methodology.
 
 ## Next Steps
 

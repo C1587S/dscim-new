@@ -124,21 +124,23 @@ config = DSCIMConfig(
 )
 ```
 
-## Running Examples
+## Running the Example
 
-Several example scripts are provided:
+The integration replication example demonstrates the complete DSCIM pipeline:
 
 ```bash
-# Complete pipeline with synthetic data
-cd examples/scripts
-python full_pipeline_example.py --verbose
-
-# Simple standalone example
-python simple_run_ssps.py
-
-# Jupyter notebook tutorial
-jupyter lab ../notebooks/full_sccs.ipynb
+# Run the comprehensive integration example
+cd examples
+python run_integration_results_replication.py
 ```
+
+This script automatically:
+- Generates all required synthetic data (no setup needed)
+- Runs the complete 11-step DSCIM pipeline
+- Saves results in organized directories
+- Takes approximately 5-10 minutes to complete
+
+See the **[Integration Replication Guide](../examples/integration-replication.md)** for detailed documentation of all pipeline steps, configuration, and outputs.
 
 ## Output Structure
 
