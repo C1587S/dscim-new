@@ -135,10 +135,11 @@ python run_integration_results_replication.py
 ```
 
 This script automatically:
+
 - Generates all required synthetic data (no setup needed)
 - Runs the complete 11-step DSCIM pipeline
 - Saves results in organized directories
-- Takes approximately 5-10 minutes to complete
+- Takes approximately 1 minutes to complete
 
 See the **[Integration Replication Guide](../examples/integration-replication.md)** for detailed documentation of all pipeline steps, configuration, and outputs.
 

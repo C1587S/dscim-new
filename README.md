@@ -11,7 +11,7 @@ DSCIM-New is a refactored version of the Data-driven Spatial Climate Impact Mode
 - **Modular pipeline architecture** - Independent, reusable pipeline steps
 - **Type-safe configuration** - Pydantic schemas for validation
 - **Computational equivalence** - Produces identical results to original DSCIM
-- **Enhanced flexibility** - Run complete workflows or individual steps
+- **Flexibility** - Run complete workflows or individual steps
 
 ## Documentation
 
